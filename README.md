@@ -21,7 +21,6 @@ npm install hapi-proxy
 ```js
 const hapiProxy = require('hapi-proxy');
 
-
 const config = {
     port: 9001,
     host: 'localhost',
@@ -31,9 +30,9 @@ const config = {
         passThrough: true,
         headers: [
             ['Content-Encoding', 'gzip'],
-            ['Content-Type', 'text/html charset=utf-8']
+            ['Content-Type', 'text/html charset=utf-8'] // 2d Arrays allow for dynamic key values
         ],
-        mappingFn: function(request) {
+        mapFn: function(request) {
             return request; // return proxy path
         }
     },{
@@ -44,7 +43,7 @@ const config = {
             ['Content-Encoding', 'gzip'],
             ['Content-Type', 'text/html charset=utf-8']
         ],
-        mappingFn: function(request) {
+        mapFn: function(request) {
             return request; 
         }
     }]
