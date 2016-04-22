@@ -7,7 +7,6 @@
     "url": "https://github.com/davidchase/hapi-proxy/issues"
   },
   "devDependencies": {
-    "semistandard": "*",
     "tap-spec": "^4.0.2",
     "tape": "^4.0.0"
   },
@@ -24,7 +23,7 @@
     "url": "https://github.com/davidchase/hapi-proxy.git"
   },
   "scripts": {
-    "test": "semistandard && tape test/*.js | tap-spec"
+    "test": "tape test/*.js | tap-spec"
   },
   "dependencies": {
     "h2o2": "5.1.0",
