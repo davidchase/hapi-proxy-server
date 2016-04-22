@@ -1,0 +1,33 @@
+{
+  "name": "hapi-proxy",
+  "description": "A simple h2o2 wrapper",
+  "version": "1.0.0",
+  "author": "David Chase <davidchase03@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/davidchase/hapi-proxy/issues"
+  },
+  "devDependencies": {
+    "semistandard": "*",
+    "tap-spec": "^4.0.2",
+    "tape": "^4.0.0"
+  },
+  "homepage": "https://github.com/davidchase/hapi-proxy",
+  "keywords": [
+    "h2o2",
+    "hapi",
+    "proxy"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidchase/hapi-proxy.git"
+  },
+  "scripts": {
+    "test": "semistandard && tape test/*.js | tap-spec"
+  },
+  "dependencies": {
+    "h2o2": "5.1.0",
+    "hapi": "13.3.0"
+  }
+}
