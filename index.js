@@ -1,19 +1,7 @@
 'use strict';
 const Hapi = require('hapi');
 const h2o2 = require('h2o2');
-
-const head = xs => xs[0];
-
-const last = xs => xs[xs.length - 1];
-
-const fromPairs = function(xs) {
-    return xs.reduce(function(obj, x) {
-        if (x.length) {
-            obj[head(x)] = last(x);
-        }
-        return obj;
-    }, {});
-};
+const fromPairs = require('./lib/prelude').fromPairs;
 
 module.exports = function(config) {
     const server = new Hapi.Server();
