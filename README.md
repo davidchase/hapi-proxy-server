@@ -19,7 +19,38 @@ npm install hapi-proxy
 ## Usage
 
 ```js
-var hapiProxy = require('hapi-proxy')
+const hapiProxy = require('hapi-proxy');
+
+
+const config = {
+    port: 9001,
+    host: 'localhost',
+    proxy: [{
+        method: 'GET',
+        path: '/path/{p*}',
+        passThrough: true,
+        headers: [
+            ['Content-Encoding', 'gzip'],
+            ['Content-Type', 'text/html charset=utf-8']
+        ],
+        mappingFn: function(request) {
+            return request; // return proxy path
+        }
+    },{
+        method: '*',
+        path: '/path/{p*}',
+        passThrough: true,
+        headers: [
+            ['Content-Encoding', 'gzip'],
+            ['Content-Type', 'text/html charset=utf-8']
+        ],
+        mappingFn: function(request) {
+            return request; 
+        }
+    }]
+};
+
+hapiProxy(config); // will create proxy hapi server at localhost:9001
 ```
 
 ## License
