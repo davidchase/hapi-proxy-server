@@ -1,25 +1,25 @@
-# hapi-proxy
+# hapi-proxy-server
 
 [![npm][npm-image]][npm-url]
 [![travis][travis-image]][travis-url]
 
-[npm-image]: https://img.shields.io/npm/v/hapi-proxy.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/hapi-proxy
-[travis-image]: https://img.shields.io/travis/davidchase/hapi-proxy.svg?style=flat-square
-[travis-url]: https://travis-ci.org/davidchase/hapi-proxy
+[npm-image]: https://img.shields.io/npm/v/hapi-proxy-server.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/hapi-proxy-server
+[travis-image]: https://img.shields.io/travis/davidchase/hapi-proxy-server.svg?style=flat-square
+[travis-url]: https://travis-ci.org/davidchase/hapi-proxy-server
 
 A simple h2o2 wrapper
 
 ## Install
 
 ```
-npm install hapi-proxy
+npm install hapi-proxy-server
 ```
 
 ## Usage
 
 ```js
-const hapiProxy = require('hapi-proxy');
+const hapiProxyServer = require('hapi-proxy-server');
 
 const config = {
     port: 9001,
@@ -49,7 +49,7 @@ const config = {
     }]
 };
 
-hapiProxy(config); // will create proxy hapi server at localhost:9001
+hapiProxyServer(config); // will create proxy hapi server at localhost:9001
 ```
 
 ## License
