@@ -1,16 +1,16 @@
 {
-  "name": "hapi-proxy",
+  "name": "hapi-proxy-server",
   "description": "A simple h2o2 wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "David Chase <davidchase03@gmail.com>",
   "bugs": {
-    "url": "https://github.com/davidchase/hapi-proxy/issues"
+    "url": "https://github.com/davidchase/hapi-proxy-server/issues"
   },
   "devDependencies": {
     "tap-spec": "^4.0.2",
     "tape": "^4.0.0"
   },
-  "homepage": "https://github.com/davidchase/hapi-proxy",
+  "homepage": "https://github.com/davidchase/hapi-proxy-server",
   "keywords": [
     "h2o2",
     "hapi",
@@ -20,7 +20,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/davidchase/hapi-proxy.git"
+    "url": "https://github.com/davidchase/hapi-proxy-server.git"
   },
   "scripts": {
     "test": "tape test/*.js | tap-spec"

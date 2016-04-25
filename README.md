@@ -32,7 +32,7 @@ const config = {
             ['Content-Encoding', 'gzip'],
             ['Content-Type', 'text/html charset=utf-8'] // 2d Arrays allow for dynamic key values
         ],
-        mapFn: function(request) {
+        mapRequest: function(request) {
             return request; // return proxy path
         }
     },{
@@ -43,7 +43,7 @@ const config = {
             ['Content-Encoding', 'gzip'],
             ['Content-Type', 'text/html charset=utf-8']
         ],
-        mapFn: function(request) {
+        mapRequest: function(request) {
             return request; 
         }
     }]
@@ -51,6 +51,20 @@ const config = {
 
 hapiProxyServer(config); // will create proxy hapi server at localhost:9001
 ```
+
+## API
+
+`passThrough` a boolean to allow headers from the client to pass onto the proxied endpoint (default true).
+
+`headers` as a list `[[key, values]]` pairs to pass on to the proxy.
+
+`mapRequest` a `function (request)` that takes a request and needs to return the absolute uri.
+
+`port` a port to listen on for the server (default 0, random).
+
+`host` proxy host name (default localhost).
+
+`path` path of the proxy route
 
 ## License
 
