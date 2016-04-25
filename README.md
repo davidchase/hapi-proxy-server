@@ -66,6 +66,10 @@ hapiProxyServer(config); // will create proxy hapi server at localhost:9001
 
 `path` path of the proxy route
 
+## Todo
+
+- [ ] Add more options
+
 ## License
 
 [MIT](LICENSE.md)
