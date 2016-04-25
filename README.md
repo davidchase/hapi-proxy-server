@@ -52,6 +52,22 @@ const config = {
 hapiProxyServer(config); // will create proxy hapi server at localhost:9001
 ```
 
+### Min config
+
+```js
+const config = {
+    proxy: [{
+        method: 'GET',
+        path: '/path/{p*}',
+        mapRequest: function(request) {
+            return request; // return proxy path
+        }
+    }]
+}
+
+hapiProxyServer(config); // will create proxy hapi server at localhost and a random available port
+```
+
 ## API
 
 `passThrough` a boolean to allow headers from the client to pass onto the proxied endpoint (default true).
@@ -71,6 +87,8 @@ hapiProxyServer(config); // will create proxy hapi server at localhost:9001
 ## Todo
 
 - [ ] Add more options
+- [ ] Publish to npm
+- [ ] Add tests
 
 ## License
 
