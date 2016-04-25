@@ -66,7 +66,7 @@ hapiProxyServer(config); // will create proxy hapi server at localhost:9001
 
 `path` path of the proxy route.
 
-`method` method to perform on the proxy route.
+`method` method name to use on the proxy route.
 
 ## Todo
 
