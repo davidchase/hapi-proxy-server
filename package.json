@@ -1,7 +1,7 @@
 {
   "name": "hapi-proxy-server",
   "description": "A simple h2o2 wrapper",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "David Chase <davidchase03@gmail.com>",
   "bugs": {
     "url": "https://github.com/davidchase/hapi-proxy-server/issues"
