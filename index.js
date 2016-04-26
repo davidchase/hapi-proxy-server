@@ -2,6 +2,7 @@
 const Hapi = require('hapi');
 const h2o2 = require('h2o2');
 const fromPairs = require('./lib/prelude').fromPairs;
+const defaultTo = require('./lib/prelude').defaultTo;
 
 module.exports = function hapiProxyServer(config) {
     const server = new Hapi.Server();
@@ -30,7 +31,7 @@ module.exports = function hapiProxyServer(config) {
                     passThrough: proxy.passThrough || true,
                     mapUri: function(request, callback) {
                         const proxiedURI = proxy.mapRequest(request);
-                        callback(null, proxiedURI, fromPairs(proxy.headers));
+                        callback(null, proxiedURI, fromPairs(defaultTo([], proxy.headers)));
                     }
                 }
             }
