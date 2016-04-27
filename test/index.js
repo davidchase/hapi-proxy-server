@@ -1,6 +1,7 @@
-var test = require('tape');
+const test = require('tape');
+const hapiProxyServer = require('../index');
 
-test('Example Test', function (t) {
-  t.plan(1);
-  t.error('No tests defined.');
-});
+hapiProxyServer({
+  port: 0,
+  host: 'localhost'
+})

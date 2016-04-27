@@ -4,12 +4,19 @@ const h2o2 = require('h2o2');
 const fromPairs = require('./lib/prelude').fromPairs;
 const defaultTo = require('./lib/prelude').defaultTo;
 
+const defaults = {
+    host: 'localhost',
+    port: 0,
+    proxy: []
+};
+
 module.exports = function hapiProxyServer(config) {
     const server = new Hapi.Server();
+    const opts = Object.assign({}, defaults, config);
 
     server.connection({
-        host: config.host || 'localhost',
-        port: config.port || 0
+        host: opts.host,
+        port: opts.port
     });
 
     server.register({
@@ -22,13 +29,13 @@ module.exports = function hapiProxyServer(config) {
             server.start(() => console.log('server started at:', server.info.uri));
         });
 
-    const routeOpts = config.proxy.map(function(proxy) {
+    const routeOpts = opts.proxy.map(function(proxy) {
         return {
             method: proxy.method,
             path: proxy.path,
             handler: {
                 proxy: {
-                    passThrough: proxy.passThrough || true,
+                    passThrough: defaultTo(true, proxy.passThrough),
                     mapUri: function(request, callback) {
                         const proxiedURI = proxy.mapRequest(request);
                         callback(null, proxiedURI, fromPairs(defaultTo([], proxy.headers)));
