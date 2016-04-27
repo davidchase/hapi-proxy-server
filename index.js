@@ -10,9 +10,22 @@ const defaults = {
     proxy: []
 };
 
-module.exports = function hapiProxyServer(config) {
+const buildOptions = opts => opts.proxy.map(proxy => ({
+    method: proxy.method,
+    path: proxy.path,
+    handler: {
+        proxy: {
+            passThrough: defaultTo(true, proxy.passThrough),
+            mapUri: function(request, callback) {
+                const proxiedURI = proxy.mapRequest(request);
+                callback(null, proxiedURI, fromPairs(defaultTo([], proxy.headers)));
+            }
+        }
+    }
+}));
+
+const startServer = function startServer(opts, routeOpts) {
     const server = new Hapi.Server();
-    const opts = Object.assign({}, defaults, config);
 
     server.connection({
         host: opts.host,
@@ -29,20 +42,12 @@ module.exports = function hapiProxyServer(config) {
             server.start(() => console.log('server started at:', server.info.uri));
         });
 
-    const routeOpts = opts.proxy.map(function(proxy) {
-        return {
-            method: proxy.method,
-            path: proxy.path,
-            handler: {
-                proxy: {
-                    passThrough: defaultTo(true, proxy.passThrough),
-                    mapUri: function(request, callback) {
-                        const proxiedURI = proxy.mapRequest(request);
-                        callback(null, proxiedURI, fromPairs(defaultTo([], proxy.headers)));
-                    }
-                }
-            }
-        };
-    });
     server.route(routeOpts);
+};
+
+module.exports = function hapiProxyServer(config) {
+    const opts = Object.assign({}, defaults, config);
+    const routeOpts = buildOptions(opts);
+
+    startServer(opts, routeOpts);
 };
