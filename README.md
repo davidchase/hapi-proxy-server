@@ -88,7 +88,7 @@ hapiProxyServer(config); // will create proxy hapi server at localhost and a ran
 
 - [ ] Add more options
 - [ ] Publish to npm
-- [ ] Add tests
+- [x] Add tests
 
 ## License
 
