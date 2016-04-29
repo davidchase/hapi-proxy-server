@@ -43,11 +43,12 @@ const startServer = function startServer(opts, routeOpts) {
         });
 
     server.route(routeOpts);
+    return server;
 };
 
 module.exports = function hapiProxyServer(config) {
     const opts = Object.assign({}, defaults, config);
     const routeOpts = buildOptions(opts);
 
-    startServer(opts, routeOpts);
+    return startServer(opts, routeOpts);
 };
